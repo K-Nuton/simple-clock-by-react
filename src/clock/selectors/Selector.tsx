@@ -5,7 +5,7 @@ type ButtonProp = {
   innerText: string;
   selected: boolean;
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-}
+};
 const Button: React.FC<ButtonProp> = ({ innerText, selected, onClick }) => (
   <div className={`button ${selected ? "selected" : ""}`} onClick={onClick}>
     {innerText}
@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProp> = ({ innerText, selected, onClick }) => (
 
 type SelectorProp = {
   selection: ButtonProp[];
-}
+};
 const Selector: React.FC<SelectorProp> = ({ selection }) => (
   <div className="selector">
     {selection.map((choice) => 
