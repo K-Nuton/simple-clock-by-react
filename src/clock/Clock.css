@@ -1,0 +1,21 @@
+.overLay {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media (min-height: 500px) {
+  .overLay {
+    flex-direction: column;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

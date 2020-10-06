@@ -1,0 +1,23 @@
+.dotted.overLay {
+  background-color: rgb(171, 214, 214);
+}
+
+.dotted.dial {
+  border: dotted medium rgb(63, 80, 80);
+  filter: drop-shadow(10px 10px 10px black);
+  transform: translateZ(0);
+}
+
+.dotted.hand {
+  height: 1.5%;
+}
+
+.dotted.hand.s {
+  height: .5%;
+}
+
+.dotted.hand>div {
+  width: 88%;
+  height: 100%;
+  border: dotted medium rgb(63, 80, 80);
+}
