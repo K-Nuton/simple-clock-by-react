@@ -51,7 +51,7 @@ const Hands: React.FC<HandsProps> = () => {
 
   useEffect(() => {
     const id = setInterval(
-      (): void => dispatch(), 1000
+      (): void => dispatch(), 500
     );
     return (): void => clearInterval(id);
   });

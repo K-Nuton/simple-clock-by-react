@@ -7,7 +7,7 @@ import './Marks.css';
 type MarkProp = {
   degree: number;
   theme: string;
-}
+};
 const Mark: React.FC<MarkProp> = ({ degree, theme }) => (
   <div className={`mark ${theme}`} style={{ transform: `rotate(${degree}deg)` }}>
     <div></div>
@@ -26,6 +26,6 @@ const Marks: React.FC<MarksProp> = () => {
         .map((degree) => <Mark key={degree.toString()} degree={degree} theme={theme} />)}
     </div>
   );
-}
+};
 
 export default Marks;

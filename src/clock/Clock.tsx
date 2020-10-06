@@ -39,7 +39,7 @@ const shapeSelectReducer = (clickState: shapeType, innerText: Shape): shapeType 
 };
 
 type ClockProp = {
-}
+};
 const Clock: React.FC<ClockProp> = () => {
   const [theme, setTheme] = useState(Theme.DEFAULT);
   const [themeSelect, themeDispatch] = useReducer(themeSelectReducer, {
