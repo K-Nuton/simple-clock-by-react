@@ -1,7 +1,7 @@
 import React from 'react';
 import './Selector.css';
 
-type ButtonProp = {
+export type ButtonProp = {
   innerText: string;
   selected: boolean;
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
