@@ -1,4 +1,4 @@
 import React from 'react';
 import { Theme } from './Enums';
 
-export const ThemeContext = React.createContext(Theme.DEFAULT);
+export const ThemeContext = React.createContext(Theme.DEFAULT as string);

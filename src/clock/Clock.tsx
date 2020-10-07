@@ -11,14 +11,12 @@ import './themes/default.css';
 import './themes/dotted.css';
 
 type themeType = {
-  [Theme.DEFAULT]: boolean,
-  [Theme.NEW_MORPHISM]: boolean,
-  [Theme.DOTTED]: boolean
+  [key in Theme]: boolean
 };
 const themeSelectReducer = (clickState: themeType, innerText: Theme): themeType => {
   const result: themeType = {
     [Theme.DEFAULT]: false,
-    [Theme.NEW_MORPHISM]: false,
+    [Theme.NEU_MORPHISM]: false,
     [Theme.DOTTED]: false
   };
   result[innerText] = true;
@@ -26,8 +24,7 @@ const themeSelectReducer = (clickState: themeType, innerText: Theme): themeType 
 };
 
 type shapeType = {
-  [Shape.CIRCLE]: boolean,
-  [Shape.SQUARE]: boolean
+  [key in Shape]: boolean
 };
 const shapeSelectReducer = (clickState: shapeType, innerText: Shape): shapeType => {
   const result: shapeType = {
@@ -41,14 +38,14 @@ const shapeSelectReducer = (clickState: shapeType, innerText: Shape): shapeType 
 type ClockProp = {
 };
 const Clock: React.FC<ClockProp> = () => {
-  const [theme, setTheme] = useState(Theme.DEFAULT);
+  const [theme, setTheme] = useState(Theme.DEFAULT as string);
   const [themeSelect, themeDispatch] = useReducer(themeSelectReducer, {
     [Theme.DEFAULT]: true,
-    [Theme.NEW_MORPHISM]: false,
+    [Theme.NEU_MORPHISM]: false,
     [Theme.DOTTED]: false
   });
 
-  const [shape, setShape] = useState(Shape.CIRCLE);
+  const [shape, setShape] = useState(Shape.CIRCLE as string);
   const [shapeSelect, shapeDispatch] = useReducer(shapeSelectReducer, {
     [Shape.CIRCLE]: true,
     [Shape.SQUARE]: false
