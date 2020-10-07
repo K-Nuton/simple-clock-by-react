@@ -10,7 +10,7 @@ type HandProp = {
   degree: number;
   theme: string;
 };
-const Hand: React.FC<HandProp> = ({ handType, degree, theme }) => (
+const Hand: React.FC<HandProp> = ({ handType, degree, theme }): JSX.Element => (
   <div className={`hand ${handType} ${theme}`}
     style={{ transform: `rotate(${degree}deg)` }}>
     <div></div>
@@ -20,7 +20,7 @@ const Hand: React.FC<HandProp> = ({ handType, degree, theme }) => (
 type CenterProp = {
   theme: string;
 };
-const Center: React.FC<CenterProp> = ({ theme }) => (
+const Center: React.FC<CenterProp> = ({ theme }): JSX.Element => (
   <div className={`center ${theme}`}></div>
 );
 
@@ -30,7 +30,7 @@ type HandsState = {
   seconds: number
 };
 const updateHands = (): HandsState => {
-  const date = new Date();
+  const date: Date = new Date();
   return {
     hours: getDegreeFromDate(date, HandType.HOURS),
     minutes: getDegreeFromDate(date, HandType.MINUTES),
@@ -40,17 +40,19 @@ const updateHands = (): HandsState => {
 
 type HandsProps = {
 };
-const Hands: React.FC<HandsProps> = () => {
-  const date = new Date();
-  const theme = useContext(ThemeContext);
-  const [degree, dispatch] = useReducer(updateHands, {
+const Hands: React.FC<HandsProps> = (): JSX.Element => {
+  const date: Date = new Date();
+  const theme: string = useContext(ThemeContext);
+
+  type handReducerType = [HandsState, React.DispatchWithoutAction];
+  const [degree, dispatch]: handReducerType = useReducer(updateHands, {
     hours: getDegreeFromDate(date, HandType.HOURS),
     minutes: getDegreeFromDate(date, HandType.MINUTES),
     seconds: getDegreeFromDate(date, HandType.SECONDS)
   });
 
   useEffect(() => {
-    const id = setInterval(
+    const id: NodeJS.Timeout = setInterval(
       (): void => dispatch(), 500
     );
     return (): void => clearInterval(id);
