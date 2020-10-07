@@ -7,7 +7,7 @@ type DialProps = {
   children?: JSX.Element[];
   shape: string;
 };
-const Dial: React.FC<DialProps> = ({ children, shape }) => {
+const Dial: React.FC<DialProps> = ({ children, shape }): JSX.Element => {
   const theme: string = useContext(ThemeContext);
 
   const decide_scaling = (): string => 
@@ -15,7 +15,7 @@ const Dial: React.FC<DialProps> = ({ children, shape }) => {
 
   type scalingState = [string, React.Dispatch<React.SetStateAction<string>>];
   const [scaling, setScale]: scalingState = useState(decide_scaling());
-  
+
   const resize = (): void => setScale(decide_scaling());
 
   useEffect(() => {
