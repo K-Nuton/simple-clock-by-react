@@ -17,7 +17,7 @@ type SelectorProp = {
 };
 const Selector: React.FC<SelectorProp> = ({ selection }): JSX.Element => (
   <div className="selector">
-    {selection.map((choice) => 
+    {selection.map((choice: ButtonProp): JSX.Element => 
       <Button key={choice.innerText} 
               innerText={choice.innerText}
               selected={choice.selected}

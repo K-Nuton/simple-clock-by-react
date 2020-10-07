@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useReducer } from "react";
-import { HandType } from '../Enums';
-import { getDegreeFromDate } from '../TimeUtil';
+import { HandType, Theme } from '../Enums';
+import getDegreeFromDate from '../TimeUtil';
 import { ThemeContext } from '../ThemeContext';
 import './Hands.css';
 import './Hands.css';
 
 type HandProp = {
-  handType: string;
+  handType: HandType;
   degree: number;
-  theme: string;
+  theme: Theme;
 };
 const Hand: React.FC<HandProp> = ({ handType, degree, theme }): JSX.Element => (
   <div className={`hand ${handType} ${theme}`}
@@ -18,7 +18,7 @@ const Hand: React.FC<HandProp> = ({ handType, degree, theme }): JSX.Element => (
 );
 
 type CenterProp = {
-  theme: string;
+  theme: Theme;
 };
 const Center: React.FC<CenterProp> = ({ theme }): JSX.Element => (
   <div className={`center ${theme}`}></div>
@@ -42,7 +42,7 @@ type HandsProps = {
 };
 const Hands: React.FC<HandsProps> = (): JSX.Element => {
   const date: Date = new Date();
-  const theme: string = useContext(ThemeContext);
+  const theme: Theme = useContext(ThemeContext) as Theme;
 
   type handReducerType = [HandsState, React.DispatchWithoutAction];
   const [degree, dispatch]: handReducerType = useReducer(updateHands, {
@@ -60,9 +60,9 @@ const Hands: React.FC<HandsProps> = (): JSX.Element => {
 
   return (
     <div className={`dial-overLay shadow ${theme}`}>
-      <Hand handType="h" degree={degree.hours} theme={theme} />
-      <Hand handType="m" degree={degree.minutes} theme={theme} />
-      <Hand handType="s" degree={degree.seconds} theme={theme} />
+      <Hand handType={HandType.HOURS} degree={degree.hours} theme={theme} />
+      <Hand handType={HandType.MINUTES} degree={degree.minutes} theme={theme} />
+      <Hand handType={HandType.SECONDS} degree={degree.seconds} theme={theme} />
       <Center theme={theme} />
     </div>
   );

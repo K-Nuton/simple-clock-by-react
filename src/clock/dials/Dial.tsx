@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
+import { Shape, Theme } from '../Enums';
 import { ThemeContext } from '../ThemeContext';
 import './Dial.css'
 
+const decide_scaling = (): string => 
+    window.innerWidth < window.innerHeight ? "width-scaling" : "height-scaling";
+    
+type scalingState = [string, React.Dispatch<React.SetStateAction<string>>];
 type DialProps = {
   children?: JSX.Element[];
-  shape: string;
+  shape: Shape;
 };
 const Dial: React.FC<DialProps> = ({ children, shape }): JSX.Element => {
-  const theme: string = useContext(ThemeContext);
+  const theme: Theme = useContext(ThemeContext) as Theme;
 
-  const decide_scaling = (): string => 
-    window.innerWidth < window.innerHeight ? "width-scaling" : "height-scaling";
-
-  type scalingState = [string, React.Dispatch<React.SetStateAction<string>>];
   const [scaling, setScale]: scalingState = useState(decide_scaling());
 
   const resize = (): void => setScale(decide_scaling());
