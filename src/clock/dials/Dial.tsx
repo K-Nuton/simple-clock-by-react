@@ -10,11 +10,7 @@ type DialProps = {
 const Dial: React.FC<DialProps> = ({ children, shape }) => {
   const theme = useContext(ThemeContext);
 
-  const [W, H] = [window.innerWidth, window.innerHeight];
-  const decide_scaling = useCallback(
-    (): string => W < H ? "width-scaling" : "height-scaling", 
-    [W, H]
-  );
+  const decide_scaling = (): string => window.innerWidth < window.innerHeight ? "width-scaling" : "height-scaling";
 
   const [scaling, setScale] = useState(decide_scaling());
   const resize = ():void => setScale(decide_scaling());
