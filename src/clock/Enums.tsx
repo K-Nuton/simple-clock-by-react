@@ -6,17 +6,17 @@ const HandType = {
 } as const;
 type HandType = typeof HandType[keyof typeof HandType];
 
-const Second = {
+const Seconds = {
   PAR_HALF_DAY: 12 * 60**2,
   PAR_HOUR: 60**2,
   PAR_MINUTE: 60
 } as const;
-type Second = typeof Second[keyof typeof Second];
+type Seconds = typeof Seconds[keyof typeof Seconds];
 
 const Degree = {
-  HOURS: 360 / Second.PAR_HALF_DAY,
-  MINUTES: 360 / Second.PAR_HOUR,
-  SECONDS: 360 / Second.PAR_MINUTE,
+  HOURS: 360 / Seconds.PAR_HALF_DAY,
+  MINUTES: 360 / Seconds.PAR_HOUR,
+  SECONDS: 360 / Seconds.PAR_MINUTE,
   OFFSET: -90
 } as const;
 type Degree = typeof Degree[keyof typeof Degree];
@@ -34,4 +34,4 @@ const Shape = {
 } as const;
 type Shape = typeof Shape[keyof typeof Shape];
 
-export { HandType, Degree, Theme, Shape };
+export { HandType, Seconds, Degree, Theme, Shape };

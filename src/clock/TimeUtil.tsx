@@ -1,45 +1,37 @@
-import { HandType, Degree } from './Enums';
+import { HandType, Degree, Seconds } from './Enums';
 
-export const getDegreeFromDate = (date: Date, handType: number): number => {
-  const seconds = getSecondsFromDate(date, handType);
-  return getDegreeFromSeconds(seconds, handType);
-};
+export function getDegreeFromDate(date: Date, handType: HandType): number {
+  return getDegreeFromSeconds(
+    getSecondsFromDate(date, handType),
+    handType
+  );
+}
 
-const getSecondsFromDate = (date: Date, handType: number): number => {
-  let result: number = 0;
+function getSecondsFromDate(date: Date, handType: HandType): number {
   switch (handType) {
     case HandType.HOURS:
-      result = date.getHours() * 3600 +
-        date.getMinutes() * 60 +
-        date.getSeconds();
-      break;
+      return date.getHours() * Seconds.PAR_HOUR +
+             date.getMinutes() * Seconds.PAR_MINUTE +
+             date.getSeconds();
 
     case HandType.MINUTES:
-      result = date.getMinutes() * 60 +
-        date.getSeconds();
-      break;
+      return date.getMinutes() * Seconds.PAR_MINUTE +
+             date.getSeconds();
 
     default:
-      result = date.getSeconds();
-      break;
+      return date.getSeconds();
   }
-  return result;
 };
 
-const getDegreeFromSeconds = (seconds: number, handType: number): number => {
-  let result: number = 0;
+function getDegreeFromSeconds(seconds: number, handType: HandType): number {
   switch (handType) {
     case HandType.HOURS:
-      result = seconds * Degree.HOURS;
-      break;
+      return seconds * Degree.HOURS + Degree.OFFSET;
 
     case HandType.MINUTES:
-      result = seconds * Degree.MINUTES;
-      break;
+      return seconds * Degree.MINUTES + Degree.OFFSET;
 
     default:
-      result = seconds * Degree.SECONDS;
-      break;
+      return seconds * Degree.SECONDS + Degree.OFFSET;
   }
-  return result + Degree.OFFSET;
 };
