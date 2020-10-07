@@ -3,10 +3,11 @@ import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import '../dials/Dial.css';
 import './Marks.css';
+import { Theme } from '../Enums';
 
 type MarkProp = {
   degree: number;
-  theme: string;
+  theme: Theme;
 };
 const Mark: React.FC<MarkProp> = ({ degree, theme }): JSX.Element => (
   <div className={`mark ${theme}`} style={{ transform: `rotate(${degree}deg)` }}>
@@ -17,7 +18,7 @@ const Mark: React.FC<MarkProp> = ({ degree, theme }): JSX.Element => (
 type MarksProp = {
 };
 const Marks: React.FC<MarksProp> = (): JSX.Element => {
-  const theme: string = useContext(ThemeContext);
+  const theme: Theme = useContext(ThemeContext) as Theme;
 
   return (
     <div className={`dial-overLay ${theme}`}>

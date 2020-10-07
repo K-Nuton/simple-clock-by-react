@@ -1,8 +1,8 @@
 
 const HandType = {
-  HOURS: 0,
-  MINUTES: 1,
-  SECONDS: 2
+  HOURS: "h",
+  MINUTES: "m",
+  SECONDS: "s"
 } as const;
 type HandType = typeof HandType[keyof typeof HandType];
 

@@ -65,7 +65,7 @@ const Clock: React.FC<ClockProp> = (): JSX.Element => {
   return (
     <div className={`overLay ${theme}`} >
       <ThemeContext.Provider value={theme}>
-        <Dial shape={shape} >
+        <Dial shape={shape as Shape} >
           <Hands />
           <Marks />
         </Dial>
