@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useReducer, useState } from 'react';
+import React from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import Clock from './clock/Clock';
 import Selector from './clock/selectors/Selector';
@@ -31,10 +31,9 @@ const shapeReducer = (state: ShapeStateType, innerText: Shape): ShapeStateType =
   return { ...state };
 };
 
-type stateType = [string, React.Dispatch<React.SetStateAction<string>>];
 const App: React.FC = (): JSX.Element => {
-  const [theme, setTheme]: stateType = useState<string>(Theme.DEFAULT);
-  const [shape, setShape]: stateType = useState<string>(Shape.CIRCLE);
+  const [theme, setTheme] = useState<string>(Theme.DEFAULT);
+  const [shape, setShape] = useState<string>(Shape.CIRCLE);
 
   const themeSelectInitialState: ThemesStateType = {
     [Theme.DEFAULT]: true,
