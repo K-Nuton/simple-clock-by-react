@@ -14,16 +14,16 @@ type ClockProp = {
   time: Date;
   theme: Theme;
   shape: Shape;
+  size: number;
 };
-const Clock: React.FC<ClockProp> = ({ theme, shape, time }): JSX.Element => {
-  return (
-    <div className={`clock-wrapper ${theme}`}>
-      <Dial shape={shape} >
-        <Hands time={time} />
-        <Marks />
-      </Dial>
-    </div>
-  );
-};
+const Clock: React.FC<ClockProp> = ({ theme, shape, time, size }): JSX.Element => (
+  <div className={`clock-wrapper ${theme}`} 
+       style={{width: `${size}px`, height: `${size}px`}}>
+    <Dial shape={shape} >
+      <Hands time={time} />
+      <Marks />
+    </Dial>
+  </div>
+);
 
 export default Clock;

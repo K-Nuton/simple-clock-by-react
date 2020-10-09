@@ -7,7 +7,8 @@ export type ButtonProp = {
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 const Button: React.FC<ButtonProp> = ({ innerText, selected, onClick }): JSX.Element => (
-  <div className={`button ${selected ? "selected" : ""}`} onClick={onClick}>
+  <div className={`button ${selected ? "selected" : ""}`} 
+       onClick={onClick}>
     {innerText}
   </div>
 );
