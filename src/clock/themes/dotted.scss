@@ -1,0 +1,30 @@
+
+$BACKGROUND_COLOR: rgb(171, 214, 214);
+$SURFACE_COLOR: rgb(63, 80, 80);
+$SHADOW: drop-shadow(10px 10px 10px black);
+
+.dotted {
+  &.overLay, &.clock-wrapper {
+    background-color: $BACKGROUND_COLOR;
+  }
+  
+  .dial {
+    border: dotted medium $SURFACE_COLOR;
+    filter: $SHADOW;
+    transform: translateZ(0);
+  }
+  
+  .hand {
+    height: 1.5%;
+  }
+  
+  .hand.s {
+    height: .5%;
+  }
+  
+  .hand>div {
+    width: 88%;
+    height: 100%;
+    border: dotted medium $SURFACE_COLOR;
+  }
+}
