@@ -1,11 +1,13 @@
-.mark {
-  position: absolute;
-  left: 50%;
-  width: 50%;
-  transform-origin: left center;
-}
+.marks {
+  >div {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    transform-origin: left center;
 
-.mark>div {
-  position: absolute;
-  height: 100%;
+    >div {
+      position: absolute;
+      height: 100%;
+    }
+  }
 }
