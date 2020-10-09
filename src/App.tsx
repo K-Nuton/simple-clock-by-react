@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect, useReducer, useState } from 'react';
 
 import Clock from './clock/Clock';
-import Selector from './clock/selectors/Selector';
+import Selector from './selector/Selector';
 
 import { Shape, Theme } from './clock/Enums';
-import { ButtonProp } from './clock/selectors/Selector';
+import { ButtonProp } from './selector/Selector';
 
 import './App.scss';
 
