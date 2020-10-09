@@ -7,6 +7,8 @@ import Selector from './clock/selectors/Selector';
 import { Shape, Theme } from './clock/Enums';
 import { ButtonProp } from './clock/selectors/Selector';
 
+import './App.scss';
+
 type ThemesStateType = {
   [key in Theme]: boolean;
 };
@@ -53,14 +55,19 @@ const App: React.FC = (): JSX.Element => {
       const intervalid = setInterval(() => setTime(new Date()), 1000);
       return () => clearInterval(intervalid);
     }
-  )
+  );
+
+  const size: number = (
+    window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight
+  ) * 0.7;
 
   return (
     <div className={`${theme} overLay`}>
       <Clock time={time}
              theme={theme as Theme}
-             shape={shape as Shape} />
-      <div className="button-wrapper">
+             shape={shape as Shape} 
+             size={size} />
+      <div className="selector-wrapper">
         <Selector selection={
           Object.values(Theme).map((themeName: Theme): ButtonProp => ({
             innerText: themeName,

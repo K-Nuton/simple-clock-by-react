@@ -2,10 +2,11 @@
 
 .dial {
   position: relative;
+  width: 100%;
+  height:100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2vh 2vh;
 }
 
 .dial-overLay {
@@ -25,14 +26,4 @@
 
 .square {
   border-radius: $SQUARE;
-}
-
-.width-scaling {
-  width: 70vw;
-  height: 70vw;
-}
-
-.height-scaling {
-  width: 70vh;
-  height: 70vh;
 }
