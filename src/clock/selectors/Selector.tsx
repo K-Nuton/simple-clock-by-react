@@ -1,5 +1,5 @@
 import React from 'react';
-import './Selector.css';
+import './Selector.scss';
 
 export type ButtonProp = {
   innerText: string;

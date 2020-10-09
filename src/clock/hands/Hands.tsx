@@ -1,69 +1,36 @@
-import React, { useContext, useEffect, useReducer } from "react";
-import { HandType, Theme } from '../Enums';
+import React from "react";
+import { HandType } from '../Enums';
 import getDegreeFromDate from '../TimeUtil';
-import { ThemeContext } from '../ThemeContext';
-import './Hands.css';
-import './Hands.css';
+import './Hands.scss';
 
 type HandProp = {
   handType: HandType;
   degree: number;
-  theme: Theme;
 };
-const Hand: React.FC<HandProp> = ({ handType, degree, theme }): JSX.Element => (
-  <div className={`hand ${handType} ${theme}`}
+const Hand: React.FC<HandProp> = ({ handType, degree }): JSX.Element => (
+  <div className={`hand ${handType}`}
     style={{ transform: `rotate(${degree}deg)` }}>
     <div></div>
   </div>
 );
 
-type CenterProp = {
-  theme: Theme;
-};
-const Center: React.FC<CenterProp> = ({ theme }): JSX.Element => (
-  <div className={`center ${theme}`}></div>
+const Center: React.FC = (): JSX.Element => (
+  <div className={`center`}></div>
 );
 
-type HandsState = {
-  hours: number,
-  minutes: number,
-  seconds: number
-};
-const updateHands = (): HandsState => {
-  const date: Date = new Date();
-  return {
-    hours: getDegreeFromDate(date, HandType.HOURS),
-    minutes: getDegreeFromDate(date, HandType.MINUTES),
-    seconds: getDegreeFromDate(date, HandType.SECONDS)
-  };
-};
-
 type HandsProps = {
+  time: Date;
 };
-const Hands: React.FC<HandsProps> = (): JSX.Element => {
-  const date: Date = new Date();
-  const theme: Theme = useContext(ThemeContext) as Theme;
-
-  type handReducerType = [HandsState, React.DispatchWithoutAction];
-  const [degree, dispatch]: handReducerType = useReducer(updateHands, {
-    hours: getDegreeFromDate(date, HandType.HOURS),
-    minutes: getDegreeFromDate(date, HandType.MINUTES),
-    seconds: getDegreeFromDate(date, HandType.SECONDS)
-  });
-
-  useEffect(() => {
-    const id: NodeJS.Timeout = setInterval(
-      (): void => dispatch(), 500
-    );
-    return (): void => clearInterval(id);
-  });
+const Hands: React.FC<HandsProps> = ({ time }): JSX.Element => {
+  const [degreeOfHours, degreeOfMinutes, degreeOfSeconds] =
+    Object.values(HandType).map((type: HandType) => getDegreeFromDate(time, type));
 
   return (
-    <div className={`dial-overLay shadow ${theme}`}>
-      <Hand handType={HandType.HOURS} degree={degree.hours} theme={theme} />
-      <Hand handType={HandType.MINUTES} degree={degree.minutes} theme={theme} />
-      <Hand handType={HandType.SECONDS} degree={degree.seconds} theme={theme} />
-      <Center theme={theme} />
+    <div className={`dial-overLay shadow`}>
+      <Hand handType={HandType.HOURS} degree={degreeOfHours} />
+      <Hand handType={HandType.MINUTES} degree={degreeOfMinutes} />
+      <Hand handType={HandType.SECONDS} degree={degreeOfSeconds} />
+      <Center />
     </div>
   );
 };

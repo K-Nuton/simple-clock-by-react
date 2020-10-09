@@ -1,0 +1,46 @@
+@import "../Common.scss";
+
+$BRIGHT_COLOR: rgba(237,250,255, 0.7);
+$BACKGROUND_COLOR: rgb(158,177,189);
+$DARK_COLOR: rgba(0,31,58, 0.7);
+
+.neumorphism {
+  &.overLay, &.clock-wrapper {
+    background-color: $BACKGROUND_COLOR;
+  }
+  
+  .dial {
+    background-color:$BACKGROUND_COLOR;
+    filter: drop-shadow(10px 10px 10px $DARK_COLOR)
+            drop-shadow(-10px -10px 10px $BRIGHT_COLOR);
+    transform: translateZ(0);
+  }
+  
+  .dial-overLay.shadow {
+    filter: drop-shadow(5px 5px 5px $DARK_COLOR)
+            drop-shadow(-5px -5px 5px $BRIGHT_COLOR);
+    transform: translateZ(0);
+  }
+  
+  .hand {
+    height: 2%;
+  }
+  
+  .hand>div {
+    width: 85%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: $BACKGROUND_COLOR;
+  }
+  
+  .hand.s {
+    height: 5%;
+  }
+  
+  .hand.s>div {
+    width: 14.3%;
+    height: 100%;
+    border-radius: $CIRCLE;
+    background-color: $BACKGROUND_COLOR;
+  }
+}
