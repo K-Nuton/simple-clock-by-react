@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shape } from '../Enums';
+import { Shape } from '../../Enums';
 import './Dial.scss'
 
 type DialProps = {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Theme, Shape } from './Enums';
+import { Theme, Shape } from '../Enums';
 import Hands from './hands/Hands';
 import Marks from './marks/Marks';
 import Dial from './dials/Dial';

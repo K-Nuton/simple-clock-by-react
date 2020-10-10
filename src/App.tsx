@@ -2,19 +2,15 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 import Clock from './clock/Clock';
-import Selector, { useSelection } from './selector/Selector';
+import Selector from './selector/Selector';
 
-import { Shape, Theme } from './clock/Enums';
-import { ButtonProp } from './selector/Selector';
+import { Shape, Theme } from './Enums';
 
 import './App.scss';
 
 const App: React.FC = (): JSX.Element => {
-  const [theme, setTheme] = useState<string>(Theme.DEFAULT);
-  const [shape, setShape] = useState<string>(Shape.CIRCLE);
-
-  const [themeSelectState, changeThemeSelection] = useSelection(Theme, Theme.DEFAULT);
-  const [shapeSelectState, changeShapeSelection] = useSelection(Shape, Shape.CIRCLE);
+  const [theme, setTheme] = useState(Theme.DEFAULT);
+  const [shape, setShape] = useState(Shape.CIRCLE);
 
   const [time, setTime] = useState(new Date());
   useEffect(
@@ -31,30 +27,16 @@ const App: React.FC = (): JSX.Element => {
   return (
     <div className={`${theme} overLay`}>
       <Clock time={time}
-             theme={theme as Theme}
-             shape={shape as Shape} 
+             theme={theme}
+             shape={shape} 
              size={size} />
       <div className="selector-wrapper">
-        <Selector selection={
-          Object.values(Theme).map((themeName: Theme): ButtonProp => ({
-            innerText: themeName,
-            selected: themeSelectState[themeName],
-            onClick: (): void => {
-              setTheme(themeName);
-              changeThemeSelection(themeName);
-            }
-          }))
-        } />
-        <Selector selection={
-          Object.values(Shape).map((shapeName: Shape): ButtonProp => ({
-            innerText: shapeName,
-            selected: shapeSelectState[shapeName],
-            onClick: (): void => {
-              setShape(shapeName);
-              changeShapeSelection(shapeName);
-            }
-          }))
-        } />
+        <Selector selection={Theme}
+                  selectTarget={theme}
+                  onClick={(selection) => setTheme(selection)} />
+        <Selector selection={Shape}
+                  selectTarget={shape}
+                  onClick={(selection) => setShape(selection)} />
       </div>
     </div>
   )

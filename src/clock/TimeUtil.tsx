@@ -1,4 +1,4 @@
-import { HandType, Degree, Seconds } from './Enums';
+import { HandType, Degree, Seconds } from '../Enums';
 
 export default function getDegreeFromDate(date: Date, handType: HandType): number {
   return getDegreeFromSeconds(
