@@ -1,52 +1,20 @@
 import React from 'react';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Clock from './clock/Clock';
-import Selector from './selector/Selector';
+import Selector, { useSelection } from './selector/Selector';
 
 import { Shape, Theme } from './clock/Enums';
 import { ButtonProp } from './selector/Selector';
 
 import './App.scss';
 
-type ThemesStateType = {
-  [key in Theme]: boolean;
-};
-const themeReducer = (state: ThemesStateType, innerText: Theme): ThemesStateType => {
-  Object.keys(state).forEach(
-    (key: string) => state[key as Theme] = key === innerText
-  );
-  
-  return { ...state };
-};
-
-type ShapeStateType = {
-  [key in Shape]: boolean;
-};
-const shapeReducer = (state: ShapeStateType, innerText: Shape): ShapeStateType => {
-  Object.keys(state).forEach(
-    (key: string) => state[key as Shape] = key === innerText
-  );
-
-  return { ...state };
-};
-
 const App: React.FC = (): JSX.Element => {
   const [theme, setTheme] = useState<string>(Theme.DEFAULT);
   const [shape, setShape] = useState<string>(Shape.CIRCLE);
 
-  const themeSelectInitialState: ThemesStateType = {
-    [Theme.DEFAULT]: true,
-    [Theme.DOTTED]: false,
-    [Theme.NEU_MORPHISM]: false
-  };
-  const [themeSelectState, changeThemeSelection] = useReducer(themeReducer, themeSelectInitialState);
-
-  const shapeSlectInitialState: ShapeStateType = {
-    [Shape.CIRCLE]: true,
-    [Shape.SQUARE]: false
-  };
-  const [shapeSelectState, changeShapeSelection] = useReducer(shapeReducer, shapeSlectInitialState);
+  const [themeSelectState, changeThemeSelection] = useSelection(Theme, Theme.DEFAULT);
+  const [shapeSelectState, changeShapeSelection] = useSelection(Shape, Shape.CIRCLE);
 
   const [time, setTime] = useState(new Date());
   useEffect(

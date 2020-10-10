@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import './Selector.scss';
 
 export type ButtonProp = {
@@ -31,3 +31,31 @@ const Selector: React.FC<SelectorProp> = ({ selection }): JSX.Element => (
 );
 
 export default Selector;
+
+export type SelectState = { [prop: string]: boolean; };
+type SelectDispatch = [SelectState, React.Dispatch<string>];
+type Selection = { [prop: string]: string; };
+
+export const useSelection = (selection: Selection, initSelect: string): SelectDispatch => {
+  const reducer = (state: SelectState, action: string): SelectState => {
+    Object.keys(state).forEach(
+      (key) => state[key] = key === action
+    );
+
+    return { ...state };
+  };
+
+  const initialState: SelectState = getInitialSelectState(selection, initSelect);
+  
+  return useReducer(reducer, initialState);
+};
+
+const getInitialSelectState = (selection: Selection, initSelect: string): SelectState => {
+  const result: SelectState = {};
+
+  Object.values(selection).forEach(
+    (value: string) => result[value] = value === initSelect
+  );
+
+  return result;
+}
