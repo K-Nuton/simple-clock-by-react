@@ -2,7 +2,7 @@ import React from 'react';
 import { Selection } from '../Enums';
 import './Selector.scss';
 
-export type ButtonProp = {
+type ButtonProp = {
   innerText: string;
   selected: boolean;
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
