@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProp> = ({ innerText, selected, onClick }): JSX.Ele
 type SelectorProp = {
   selectItems: Selection;
   selectTarget: string;
-  onClickItem: (clickedItemsInnerText: string) => void;
+  onClickItem: (clickedItem: string) => void;
 };
 const Selector: React.FC<SelectorProp> = ({ selectItems, selectTarget, onClickItem }): JSX.Element => (
   <div className="selector">
@@ -25,8 +25,7 @@ const Selector: React.FC<SelectorProp> = ({ selectItems, selectTarget, onClickIt
         <Button key={item}
                 innerText={item}
                 selected={item===selectTarget}
-                onClick={(event) => 
-                  onClickItem((event.target as HTMLElement).innerText)} />
+                onClick={() => onClickItem(item)} />
     )}
   </div>
 );
