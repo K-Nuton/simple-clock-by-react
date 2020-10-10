@@ -7,7 +7,7 @@ type MarkProp = {
 };
 const Mark: React.FC<MarkProp> = ({ degree }): JSX.Element => (
   <div style={{ transform: `rotate(${degree}deg)` }}>
-    <div></div>
+    <div />
   </div>
 );
 

@@ -13,12 +13,10 @@ const App: React.FC = (): JSX.Element => {
   const [shape, setShape] = useState(Shape.CIRCLE);
 
   const [time, setTime] = useState(new Date());
-  useEffect(
-    () => {
-      const intervalid = setInterval(() => setTime(new Date()), 1000);
-      return () => clearInterval(intervalid);
-    }
-  );
+  useEffect(() => {
+    const intervalid = setInterval(() => setTime(new Date()), 200);
+    return () => clearInterval(intervalid);
+  });
 
   const size: number = (
     window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight
@@ -31,12 +29,12 @@ const App: React.FC = (): JSX.Element => {
              shape={shape} 
              size={size} />
       <div className="selector-wrapper">
-        <Selector selection={Theme}
+        <Selector selectItems={Theme}
                   selectTarget={theme}
-                  onClick={(selection) => setTheme(selection)} />
-        <Selector selection={Shape}
+                  onClickItem={setTheme} />
+        <Selector selectItems={Shape}
                   selectTarget={shape}
-                  onClick={(selection) => setShape(selection)} />
+                  onClickItem={setShape} />
       </div>
     </div>
   )

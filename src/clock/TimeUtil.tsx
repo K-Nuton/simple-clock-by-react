@@ -1,4 +1,7 @@
+import React from 'react';
 import { HandType, Degree, Seconds } from '../Enums';
+
+export const TimeContext = React.createContext<Date>(new Date());
 
 export default function getDegreeFromDate(date: Date, handType: HandType): number {
   return getDegreeFromSeconds(

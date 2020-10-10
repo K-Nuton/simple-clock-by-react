@@ -3,7 +3,6 @@ import { Shape } from '../../Enums';
 import './Dial.scss'
 
 type DialProps = {
-  children?: JSX.Element[];
   shape: Shape;
 };
 const Dial: React.FC<DialProps> = ({ children, shape }): JSX.Element => (
