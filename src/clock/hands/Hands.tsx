@@ -12,20 +12,15 @@ const Hand: React.FC<HandProp> = ({ handType }): JSX.Element => {
     handType
   );
 
-  const style = {
-    transform: `rotate(${degree}deg)`
-  };
-
   return (
-    <div className={`hand ${handType}`} 
-         style={style}>
+    <div className={`hand ${handType}`} style={{transform: `rotate(${degree}deg)`}}>
       <div />
     </div>
   );
 };
 
 const Center: React.FC = (): JSX.Element => (
-  <div className={`center`}></div>
+  <div className={`center`} />
 );
 
 const Hands: React.FC = (): JSX.Element => (
@@ -36,6 +31,5 @@ const Hands: React.FC = (): JSX.Element => (
     <Center />
   </div>
 );
-
 
 export default Hands;
