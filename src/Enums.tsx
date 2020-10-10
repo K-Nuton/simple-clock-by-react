@@ -1,4 +1,8 @@
 
+export type Selection = {
+  [prop: string]: string;
+};
+
 const HandType = {
   HOURS: "h",
   MINUTES: "m",
@@ -21,14 +25,14 @@ const Degree = {
 } as const;
 type Degree = typeof Degree[keyof typeof Degree];
 
-const Theme = {
+const Theme: Selection = {
   DEFAULT: 'default',
   NEU_MORPHISM: 'neumorphism',
   DOTTED: 'dotted'
 } as const;
 type Theme = typeof Theme[keyof typeof Theme];
 
-const Shape = {
+const Shape: Selection = {
   CIRCLE: 'circle',
   SQUARE: 'square'
 } as const;

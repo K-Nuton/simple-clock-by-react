@@ -1,5 +1,5 @@
 import React from "react";
-import { HandType } from '../Enums';
+import { HandType } from '../../Enums';
 import getDegreeFromDate from '../TimeUtil';
 import './Hands.scss';
 
