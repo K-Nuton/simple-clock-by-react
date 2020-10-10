@@ -9,6 +9,7 @@ import './Clock.scss';
 import './themes/neumorphism.scss';
 import './themes/default.scss';
 import './themes/dotted.scss';
+import { TimeContext } from "./TimeUtil";
 
 type ClockProp = {
   time: Date;
@@ -20,10 +21,11 @@ const Clock: React.FC<ClockProp> = ({ theme, shape, time, size }): JSX.Element =
   <div className={`clock-wrapper ${theme}`} 
        style={{width: `${size}px`, height: `${size}px`}}>
     <Dial shape={shape} >
-      <Hands time={time} />
+      <TimeContext.Provider value={time}>
+        <Hands />
+      </TimeContext.Provider>
       <Marks />
     </Dial>
   </div>
 );
-
 export default Clock;
