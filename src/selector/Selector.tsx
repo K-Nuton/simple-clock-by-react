@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Selection } from '../Enums';
 import './Selector.scss';
 
@@ -18,16 +18,26 @@ type SelectorProp = {
   selectTarget: string;
   onClickItem: (clickedItem: string) => void;
 };
-const Selector: React.FC<SelectorProp> = ({ selectItems, selectTarget, onClickItem }): JSX.Element => (
-  <div className="selector">
-    {Object.values(selectItems).map(
-      (item: string): JSX.Element => 
-        <Button key={item}
-                innerText={item}
-                selected={item===selectTarget}
-                onClick={() => onClickItem(item)} />
-    )}
-  </div>
-);
+const Selector: React.FC<SelectorProp> = ({ selectItems, selectTarget, onClickItem }): JSX.Element => {
+  const onClick = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+      const innerText: string = (event.target as HTMLElement).innerText; 
+      onClickItem(innerText);
+    }, 
+    [onClickItem]
+  );
+
+  return (
+    <div className="selector">
+      {Object.values(selectItems).map(
+        (item: string): JSX.Element => 
+          <Button key={item}
+                  innerText={item}
+                  selected={item===selectTarget}
+                  onClick={onClick} />
+      )}
+    </div>
+  );
+};
 
 export default Selector;
