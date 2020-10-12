@@ -19,16 +19,12 @@ const Hand: React.FC<HandProp> = ({ handType }): JSX.Element => {
   );
 };
 
-const Center: React.FC = (): JSX.Element => (
-  <div className={`center`} />
-);
-
 const Hands: React.FC = (): JSX.Element => (
   <div className={`dial-overLay shadow`}>
     <Hand handType={HandType.HOURS} />
     <Hand handType={HandType.MINUTES} />
     <Hand handType={HandType.SECONDS} />
-    <Center />
+    <div className={`center`} />
   </div>
 );
 
