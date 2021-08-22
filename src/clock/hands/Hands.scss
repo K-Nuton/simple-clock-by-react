@@ -1,3 +1,4 @@
+
 .center {
   position: absolute;
 }
@@ -9,21 +10,17 @@
   align-items: center;
   left: 50%;
   transform-origin: left center;
-}
 
-.hand>div {
-  position: absolute;
-  right: 0;
-}
+  >div {
+    position: absolute;
+    right: 0;
+  }
 
-.hand.h {
-  width: 24%;
-}
-
-.hand.m {
-  width: 35%;
-}
-
-.hand.s {
-  width: 35%;
+  &.h {
+    width: 24%;
+  }
+  
+  &.m, &.s {
+    width: 35%;
+  }
 }

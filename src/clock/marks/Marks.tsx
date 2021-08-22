@@ -1,31 +1,23 @@
 import React from 'react';
-import { useContext } from 'react';
-import { ThemeContext } from '../ThemeContext';
-import '../dials/Dial.css';
-import './Marks.css';
+import '../dials/Dial.scss';
+import './Marks.scss';
 
 type MarkProp = {
   degree: number;
-  theme: string;
-}
-const Mark: React.FC<MarkProp> = ({ degree, theme }) => (
-  <div className={`mark ${theme}`} style={{ transform: `rotate(${degree}deg)` }}>
-    <div></div>
+};
+const Mark: React.FC<MarkProp> = ({ degree }): JSX.Element => (
+  <div style={{ transform: `rotate(${degree}deg)` }}>
+    <div />
   </div>
 );
 
-type MarksProp = {
-};
-const Marks: React.FC<MarksProp> = () => {
-  const theme = useContext(ThemeContext);
+const Marks: React.FC = (): JSX.Element => (
+  <div className={'dial-overLay marks'}>
+    {[...Array(12)]
+      .map((_: null, index: number): number => 30 * index)
+      .map((degree: number): JSX.Element => <Mark key={degree.toString()} degree={degree} />)}
+  </div>
+);
 
-  return (
-    <div className={`dial-overLay ${theme}`}>
-      {[...Array(12)]
-        .map((_, index) => 30 * index)
-        .map((degree) => <Mark key={degree.toString()} degree={degree} theme={theme} />)}
-    </div>
-  );
-}
 
 export default Marks;

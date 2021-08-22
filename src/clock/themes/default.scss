@@ -1,0 +1,60 @@
+@import "../Common.scss";
+
+$DEFAULT_BACK_COLOR: white;
+$HAND_COLOR: black;
+$SECOND_COLOR: rgb(165, 55, 55);
+$MARK_COLOR: black;
+
+$DEFAULT_DIAL_SHADOW: 0px 5px 10px rgb(145, 145, 145),
+                      0px 10px 15px rgb(156, 156, 156),
+                      0px 15px 20px rgb(173, 173, 173),
+                      0px 20px 25px rgb(196, 194, 194),
+                      0px 25px 30px rgb(211, 210, 210);
+
+$DEFAULT_HAND_SHADOW: drop-shadow(0px 10px 5px rgb(109, 109, 109))
+                      drop-shadow(0px 15px 10px rgb(155, 155, 155));
+
+.default {
+  &.overLay, &.clock-wrapper {
+    background-color: $DEFAULT_BACK_COLOR;
+  }
+
+  .dial {
+    background-color: $DEFAULT_BACK_COLOR;
+    box-shadow: $DEFAULT_DIAL_SHADOW;
+  }
+
+  .center {
+    width: 3%;
+    height: 3%;
+    border-radius: $CIRCLE;
+    background-color: $HAND_COLOR;
+  }
+
+  .hand {
+    height: 1%;
+    background-color: $HAND_COLOR;
+
+    &.s {
+      height: .5%;
+      background-color: $SECOND_COLOR;
+    }
+  }
+
+  .dial-overLay {
+    &.shadow {
+      filter: $DEFAULT_HAND_SHADOW;
+      transform: translateZ(0);
+    }
+  }
+
+  .marks > div {
+    height: 1%;
+
+    >div {
+      right: 10%;
+      width: 5%;
+      background-color: $MARK_COLOR;
+    }
+  }
+}
